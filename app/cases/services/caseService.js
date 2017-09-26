@@ -485,7 +485,8 @@ export default class CaseService {
             }
         };
         this.populateComments = function(caseNumber) {
-            var promise = $q.all([strataService.cases.comments.get(caseNumber), hydrajs.commentFeedback.getCommentFeedback(this.kase.case_number)]);
+            // var promise = $q.all([strataService.cases.comments.get(caseNumber), hydrajs.commentFeedback.getCommentFeedback(this.kase.case_number)]);
+            var promise = $q.all([strataService.cases.comments.get(caseNumber)]);
             var draftId;
             promise.then(angular.bind(this, function(comments) {
                 angular.forEach(comments[0], angular.bind(this, function(comment, index) {
@@ -502,12 +503,12 @@ export default class CaseService {
                         }
                         comments[0].slice(index, index + 1);
                     }
-                    let commentFeedback = _.filter(comments[1], (comm) => comm.commentId === comment.id);
-                    if (RHAUtils.isNotEmpty(commentFeedback[0])) {
-                        comment.feedback = commentFeedback[0].feedback;
-                    } else {
-                        comment.feedback = undefined;
-                    }
+                    // let commentFeedback = _.filter(comments[1], (comm) => comm.commentId === comment.id);
+                    // if (RHAUtils.isNotEmpty(commentFeedback[0])) {
+                    //     comment.feedback = commentFeedback[0].feedback;
+                    // } else {
+                    //     comment.feedback = undefined;
+                    // }
                 }));
                 if (this.localStorageCache) {
                     var cacheKey = (caseNumber + securityService.loginStatus.authedUser.sso_username);
