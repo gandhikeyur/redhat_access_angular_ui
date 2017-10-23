@@ -56,47 +56,49 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	"use strict";
 	Object.defineProperty(exports, "__esModule", { value: true });
-	var insights_1 = __webpack_require__(27);
-	var roleMetadata_1 = __webpack_require__(33);
-	var testClass_1 = __webpack_require__(40);
+	var insights_1 = __webpack_require__(28);
+	var roleMetadata_1 = __webpack_require__(34);
+	var testClass_1 = __webpack_require__(41);
 	var general_1 = __webpack_require__(25);
-	var kyce_1 = __webpack_require__(29);
+	var kyce_1 = __webpack_require__(30);
 	var businessHours_1 = __webpack_require__(15);
-	var tags_1 = __webpack_require__(38);
+	var tags_1 = __webpack_require__(39);
 	var brms_1 = __webpack_require__(14);
 	var user_1 = __webpack_require__(3);
 	var contact_1 = __webpack_require__(4);
-	var case_1 = __webpack_require__(45);
+	var case_1 = __webpack_require__(46);
 	var caseGroup_1 = __webpack_require__(7);
-	var bomgar_1 = __webpack_require__(44);
+	var bomgar_1 = __webpack_require__(45);
 	var caseHistory_1 = __webpack_require__(18);
 	var escalation_1 = __webpack_require__(23);
-	var chat_1 = __webpack_require__(46);
+	var chat_1 = __webpack_require__(47);
 	var bugzilla_1 = __webpack_require__(6);
 	var product_1 = __webpack_require__(8);
+	var externalTracker_1 = __webpack_require__(50);
 	var comment_1 = __webpack_require__(21);
-	var user_2 = __webpack_require__(41);
-	var kcs_1 = __webpack_require__(28);
+	var user_2 = __webpack_require__(42);
+	var kcs_1 = __webpack_require__(29);
 	var case_2 = __webpack_require__(17);
-	var shiftMetadata_1 = __webpack_require__(36);
-	var templateMetadata_1 = __webpack_require__(39);
-	var vendorProduct_1 = __webpack_require__(43);
+	var shiftMetadata_1 = __webpack_require__(37);
+	var templateMetadata_1 = __webpack_require__(40);
+	var vendorProduct_1 = __webpack_require__(44);
 	var certification_1 = __webpack_require__(19);
+	var hive_1 = __webpack_require__(27);
 	var certificationTest_1 = __webpack_require__(20);
-	var userShifts_1 = __webpack_require__(42);
+	var userShifts_1 = __webpack_require__(43);
 	var groupMetadata_1 = __webpack_require__(26);
 	var counts_1 = __webpack_require__(22);
-	var review_1 = __webpack_require__(32);
-	var products_1 = __webpack_require__(31);
-	var sbrs_1 = __webpack_require__(35);
+	var review_1 = __webpack_require__(33);
+	var products_1 = __webpack_require__(32);
+	var sbrs_1 = __webpack_require__(36);
 	var externalTrackers_1 = __webpack_require__(24);
-	var solr_1 = __webpack_require__(37);
+	var solr_1 = __webpack_require__(38);
 	var account_1 = __webpack_require__(13);
 	var callCenters_1 = __webpack_require__(16);
-	var commentFeedback_1 = __webpack_require__(30);
-	var roles_1 = __webpack_require__(34);
+	var commentFeedback_1 = __webpack_require__(31);
+	var roles_1 = __webpack_require__(35);
 	var account_2 = __webpack_require__(5);
-	var comment_2 = __webpack_require__(47);
+	var comment_2 = __webpack_require__(48);
 	exports.default = {
 	    general: {
 	        health: general_1.health,
@@ -214,15 +216,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	        getCertificationTestPlan: certificationTest_1.getCertificationTestPlan,
 	        updateCertificationTestPlanComponent: certificationTest_1.updateCertificationTestPlanComponent,
 	        updateCertificationTestPlanItem: certificationTest_1.updateCertificationTestPlanItem,
-	        getCertificationTestData: certificationTest_1.getCertificationTestData,
-	        getProgram: certification_1.getProgram,
-	        getPrograms: certification_1.getPrograms,
-	        getRedHatProduct: certification_1.getRedHatProduct,
-	        getRedHatProducts: certification_1.getRedHatProducts,
-	        getRedHatVersion: certification_1.getRedHatVersion,
-	        getRedHatVersions: certification_1.getRedHatVersions,
-	        getPlatform: certification_1.getPlatform,
-	        getPlatforms: certification_1.getPlatforms,
+	        getCertificationTestResults: certificationTest_1.getCertificationTestResults,
+	        getCertificationTestLog: certificationTest_1.getCertificationTestLog,
+	        getCertificationSubTestLog: certificationTest_1.getCertificationSubTestLog,
+	    },
+	    hive: {
+	        getAll: hive_1.getAll,
+	        getProgram: hive_1.getProgram,
+	        getPrograms: hive_1.getPrograms,
+	        getRedHatProduct: hive_1.getRedHatProduct,
+	        getRedHatProducts: hive_1.getRedHatProducts,
+	        getRedHatVersion: hive_1.getRedHatVersion,
+	        getRedHatVersions: hive_1.getRedHatVersions,
+	        getPlatform: hive_1.getPlatform,
+	        getPlatforms: hive_1.getPlatforms,
 	    },
 	    review: {
 	        getQuestions: review_1.getQuestions,
@@ -305,7 +312,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        getCaseCommentFields: comment_2.getCaseCommentFields,
 	        getLiveChatTranscriptFields: chat_1.getLiveChatTranscriptFields,
 	        getBugzillaBugFields: bugzilla_1.getBugzillaBugFields,
-	        getProductFields: product_1.getProductFields
+	        getProductFields: product_1.getProductFields,
+	        getExternalTrackerFields: externalTracker_1.getExternalTrackerFields
 	    },
 	    caseHistory: {
 	        getHistory: caseHistory_1.getHistory
@@ -341,51 +349,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	if (process && ({"NODE_ENV":"production"}) && ({"NODE_ENV":"production"}).RHN_USER) {
 	    auth = createBasicAuth(({"NODE_ENV":"production"}).RHN_USER, ({"NODE_ENV":"production"}).RHN_PASS);
 	}
-	if (process && ({"NODE_ENV":"production"}) && ({"NODE_ENV":"production"}).HYDRA_HOSTNAME) {
-	    hydraHostName = new Uri(({"NODE_ENV":"production"}).HYDRA_HOSTNAME);
+	if (process && ({"NODE_ENV":"production"}) && (({"NODE_ENV":"production"}).HYDRA_HOSTNAME || ({"NODE_ENV":"production"}).PCM_HOSTNAME)) {
+	    if (({"NODE_ENV":"production"}).HYDRA_HOSTNAME)
+	        hydraHostName = new Uri(({"NODE_ENV":"production"}).HYDRA_HOSTNAME);
+	    if (({"NODE_ENV":"production"}).PCM_HOSTNAME)
+	        pcmHostName = new Uri(({"NODE_ENV":"production"}).PCM_HOSTNAME);
 	}
 	else if (typeof window !== 'undefined' && window) {
 	    if (window.location.hostname === 'access.redhat.com' || window.location.hostname === 'prod.foo.redhat.com' || window.location.hostname === 'fooprod.redhat.com' || window.location.hostname === 'skedge.redhat.com') {
 	        hydraHostName = new Uri('https://hydraadmin-corp-redhat-com.vserver.prod.ext.phx2.redhat.com/hydra/rest/');
-	    }
-	    else if (window.location.hostname === 'access.qa.redhat.com' || window.location.hostname === 'qa.foo.redhat.com' || window.location.hostname === 'fooqa.redhat.com' || window.location.hostname === 'skedge.qa.redhat.com') {
-	        hydraHostName = new Uri('https://hydraadmin-corp-qa-redhat-com.vserver.qa.ext.phx1.redhat.com/hydra/rest/');
-	    }
-	    else if (window.location.hostname === 'access.devgssfte.devlab.phx1.redhat.com' || window.location.hostname === 'fte.foo.redhat.com' || window.location.hostname === 'foofte.redhat.com') {
-	        hydraHostName = new Uri('https://hydraadmin-corp-dev-redhat-com.vserver.devlab.ext.phx1.redhat.com/hydra/rest/');
-	    }
-	    else if (window.location.hostname === 'access.devgssci.devlab.phx1.redhat.com' || window.location.hostname === 'ci.foo.redhat.com' || window.location.hostname === 'fooci.redhat.com' || window.location.hostname === 'skedge.ci.redhat.com') {
-	        hydraHostName = new Uri('https://hydraadmin-corp-dev-redhat-com.vserver.devlab.ext.phx1.redhat.com/hydra/rest/');
-	    }
-	    else if (window.location.hostname === 'access.stage.redhat.com' || window.location.hostname === 'stage.foo.redhat.com' || window.location.hostname === 'foostage.redhat.com' || window.location.hostname === 'skedge.stage.redhat.com') {
-	        hydraHostName = new Uri('https://hydraadmin-corp-stage-redhat-com.vserver.stage.ext.phx2.redhat.com/hydra/rest/');
-	    }
-	}
-	else {
-	    throw new Error('Could not determine hostname, if you are running in Node make sure to set the HYDRA_HOSTNAME, RHN_USER, and RHN_PASS env variables.');
-	}
-	if (process && ({"NODE_ENV":"production"}) && ({"NODE_ENV":"production"}).PCM_HOSTNAME) {
-	    pcmHostName = new Uri(({"NODE_ENV":"production"}).PCM_HOSTNAME);
-	}
-	else if (typeof window !== 'undefined' && window) {
-	    if (window.location.hostname === 'access.redhat.com' || window.location.hostname === 'prod.foo.redhat.com' || window.location.hostname === 'fooprod.redhat.com' || window.location.hostname === 'skedge.redhat.com') {
 	        pcmHostName = new Uri('https://access.redhat.com/hydra/rest/');
 	    }
 	    else if (window.location.hostname === 'access.qa.redhat.com' || window.location.hostname === 'qa.foo.redhat.com' || window.location.hostname === 'fooqa.redhat.com' || window.location.hostname === 'skedge.qa.redhat.com') {
+	        hydraHostName = new Uri('https://hydraadmin-corp-qa-redhat-com.vserver.qa.ext.phx1.redhat.com/hydra/rest/');
 	        pcmHostName = new Uri('https://access.qa.redhat.com/hydra/rest/');
 	    }
 	    else if (window.location.hostname === 'access.devgssfte.devlab.phx1.redhat.com' || window.location.hostname === 'fte.foo.redhat.com' || window.location.hostname === 'foofte.redhat.com') {
+	        hydraHostName = new Uri('https://hydraadmin-corp-dev-redhat-com.vserver.devlab.ext.phx1.redhat.com/hydra/rest/');
 	        pcmHostName = new Uri('https://access.devgssfte.devlab.phx1.redhat.com/hydra/rest/');
 	    }
 	    else if (window.location.hostname === 'access.devgssci.devlab.phx1.redhat.com' || window.location.hostname === 'ci.foo.redhat.com' || window.location.hostname === 'fooci.redhat.com' || window.location.hostname === 'skedge.ci.redhat.com') {
+	        hydraHostName = new Uri('https://hydraadmin-corp-dev-redhat-com.vserver.devlab.ext.phx1.redhat.com/hydra/rest/');
 	        pcmHostName = new Uri('https://hydraadmin-corp-dev-redhat-com.vserver.devlab.ext.phx1.redhat.com/hydra/rest/');
 	    }
 	    else if (window.location.hostname === 'access.stage.redhat.com' || window.location.hostname === 'stage.foo.redhat.com' || window.location.hostname === 'foostage.redhat.com' || window.location.hostname === 'skedge.stage.redhat.com') {
+	        hydraHostName = new Uri('https://hydraadmin-corp-stage-redhat-com.vserver.stage.ext.phx2.redhat.com/hydra/rest/');
 	        pcmHostName = new Uri('https://access.stage.redhat.com/hydra/rest/');
 	    }
 	}
 	else {
-	    throw new Error('Could not determine hostname, if you are running in Node make sure to set the HYDRA_HOSTNAME, RHN_USER, and RHN_PASS env variables.');
+	    throw new Error('Could not determine hostname, if you are running in Node make sure to set the HYDRA_HOSTNAME, PCM_HOSTNAME, RHN_USER, and RHN_PASS env variables.');
 	}
 	var Env = (function () {
 	    function Env() {
@@ -430,16 +423,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    });
 	}
-	// If the token is expiring within 60 seconds, go ahead and refresh it.  Using 60 seconds considering jwt.js checks if
-	// the token needs to be refreshed every 60 seconds with a TTE of 90 seconds.  So 60 seconds guarantees that
+	// If the token is expiring within 30 seconds, go ahead and refresh it.  Using 30 seconds considering jwt.js checks if
+	// the token needs to be refreshed every 58 seconds with a TTE of 90 seconds.  So 30 seconds guarantees that
 	// we are at the boundary of what jwt.js does without overlapping a great deal
 	function isTokenExpired() {
+	    // return (window.sessionjs && window.sessionjs.isTokenExpired(30));
+	    // For PCM , comment the above line and un-comment the below line,
+	    // else it throws an error in PCM - window.sessionjs.isTokenExpired() is not a function
 	    return (window.sessionjs && window.sessionjs._state && window.sessionjs._state.keycloak && window.sessionjs._state.keycloak.isTokenExpired(5) === true);
 	}
 	function forceTokenRefresh() {
 	    console.warn("Hydrajs detected the JWT token has expired, forcing an update");
 	    // updateToken(true) forces the token to update by passing -1 to keycloak.updateToken
-	    return window.sessionjs._state.keycloak.updateToken(-1);
+	    return window.sessionjs.updateToken(true);
+	    // For PCM , comment the above line and un-comment the below line,
+	    // else it throws an error in PCM - window.sessionjs.isTokenExpired() is not a function
+	    // return window.sessionjs._state.keycloak.updateToken(-1);
 	}
 	function getToken() {
 	    if (window.sessionjs && window.sessionjs._state.keycloak.token) {
@@ -489,10 +488,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	// Once Hydra goes to the Managed Platform then we may be able to remove this as the MP will have an 80s timeout for all requests.
 	function handleLongRunningRequest(uri, params, secondsElapsed) {
-	    if (secondsElapsed > 90) {
+	    if (secondsElapsed > 60) {
 	        // Raven
 	        if (typeof window.Raven !== 'undefined' && typeof window.Raven.captureException === 'function') {
-	            window.Raven.captureException(new Error("Long running request, seconds taken: " + secondsElapsed), {
+	            window.Raven.captureException(new Error("Hydra long running request, seconds taken: " + secondsElapsed), {
 	                extra: {
 	                    secondsElapsed: secondsElapsed,
 	                    url: uri.toString(),
@@ -517,18 +516,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	    catch (e) { }
 	}
 	function callFetchAndHandleJwt(uri, params, dataType, externalUrl) {
-		// remove Authorization from the header if calling external API from the PCM.
-		if (!externalUrl) {
-			if (env_1.default.auth) {
-				params.headers['Authorization'] = env_1.default.auth;
-			}
-			else if (getToken()) {
-				params.headers['Authorization'] = getToken();
-			}
-			else {
-				console.warn("Could not set JWT token on request header, unauthenticated.");
-			}
-		}
+	    if (!externalUrl) {
+	        if (env_1.default.auth) {
+	            params.headers['Authorization'] = env_1.default.auth;
+	        }
+	        else if (getToken()) {
+	            params.headers['Authorization'] = getToken();
+	        }
+	        else {
+	            console.warn("Could not set JWT token on request header, unauthenticated.");
+	        }
+	    }
 	    return new Promise(function (resolve, reject) {
 	        var start = new Date().getTime();
 	        if (!env_1.default.auth && isTokenExpired()) {
@@ -633,9 +631,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        });
 	    }
 	    if (dataType)
-			return callFetchAndHandleJwt(uri, params, dataType);
-		if (externalUrl)
-			return callFetchAndHandleJwt(uri, params, undefined, externalUrl);
+	        return callFetchAndHandleJwt(uri, params, dataType);
+	    if (externalUrl)
+	        return callFetchAndHandleJwt(uri, params, undefined, externalUrl);
 	    return callFetchAndHandleJwt(uri, params);
 	}
 	exports.getUri = getUri;
@@ -650,9 +648,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        body: JSON.stringify(body)
 	    };
 	    if (dataType)
-			return callFetchAndHandleJwt(uri, params, dataType);
-		if (externalUrl)
-			return callFetchAndHandleJwt(uri, params, undefined, externalUrl);
+	        return callFetchAndHandleJwt(uri, params, dataType);
+	    if (externalUrl)
+	        return callFetchAndHandleJwt(uri, params, undefined, externalUrl);
 	    return callFetchAndHandleJwt(uri, params);
 	}
 	exports.postUri = postUri;
@@ -667,9 +665,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        body: JSON.stringify(body)
 	    };
 	    if (dataType)
-			return callFetchAndHandleJwt(uri, params, dataType);
-		if (externalUrl)
-			return callFetchAndHandleJwt(uri, params, undefined, externalUrl);
+	        return callFetchAndHandleJwt(uri, params, dataType);
+	    if (externalUrl)
+	        return callFetchAndHandleJwt(uri, params, undefined, externalUrl);
 	    return callFetchAndHandleJwt(uri, params);
 	}
 	exports.putUri = putUri;
@@ -1213,7 +1211,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(49);
+	__webpack_require__(51);
 	module.exports = self.fetch.bind(self);
 
 
@@ -2075,8 +2073,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.getUri(uri);
 	}
 	exports.getTypes = getTypes;
-	function getCaseExternalTrackers(caseId) {
+	function getCaseExternalTrackers(caseId, fields, limit) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseId + "/externaltrackers");
+	    if (fields && fields.length > 0) {
+	        uri.addQueryParam('fields', fields.join(','));
+	    }
+	    if (limit !== undefined) {
+	        uri.addQueryParam('limit', limit);
+	    }
 	    return fetch_1.getUri(uri);
 	}
 	exports.getCaseExternalTrackers = getCaseExternalTrackers;
@@ -2214,8 +2218,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.deleteUri(uri);
 	}
 	exports.deleteNep = deleteNep;
-	function getAttachments(caseNumber) {
+	function getAttachments(caseNumber, includeDeleted) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseNumber + "/attachments/");
+	    if (includeDeleted === true) {
+	        uri.addQueryParam('includeDeleted', includeDeleted);
+	    }
 	    return fetch_1.getUri(uri);
 	}
 	exports.getAttachments = getAttachments;
@@ -2380,70 +2387,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.getUri(uri);
 	}
 	exports.getOpenStackProtocol = getOpenStackProtocol;
-	function getProgram(id) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/programs/" + id);
-	    return fetch_1.getUri(uri);
-	}
-	exports.getProgram = getProgram;
-	function getPrograms(filters) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/programs");
-	    if (filters && Object.keys(filters).length > 0) {
-	        for (var _i = 0, _a = Object.keys(filters); _i < _a.length; _i++) {
-	            var key = _a[_i];
-	            uri.addQueryParam(key, filters[key]);
-	        }
-	    }
-	    return fetch_1.getUri(uri);
-	}
-	exports.getPrograms = getPrograms;
-	function getRedHatProduct(id) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/products/" + id);
-	    return fetch_1.getUri(uri);
-	}
-	exports.getRedHatProduct = getRedHatProduct;
-	function getRedHatProducts(filters) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/products");
-	    if (filters && Object.keys(filters).length > 0) {
-	        for (var _i = 0, _a = Object.keys(filters); _i < _a.length; _i++) {
-	            var key = _a[_i];
-	            uri.addQueryParam(key, filters[key]);
-	        }
-	    }
-	    return fetch_1.getUri(uri);
-	}
-	exports.getRedHatProducts = getRedHatProducts;
-	function getRedHatVersion(id) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/versions/" + id);
-	    return fetch_1.getUri(uri);
-	}
-	exports.getRedHatVersion = getRedHatVersion;
-	function getRedHatVersions(filters) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/versions");
-	    if (filters && Object.keys(filters).length > 0) {
-	        for (var _i = 0, _a = Object.keys(filters); _i < _a.length; _i++) {
-	            var key = _a[_i];
-	            uri.addQueryParam(key, filters[key]);
-	        }
-	    }
-	    return fetch_1.getUri(uri);
-	}
-	exports.getRedHatVersions = getRedHatVersions;
-	function getPlatform(id) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/platforms/" + id);
-	    return fetch_1.getUri(uri);
-	}
-	exports.getPlatform = getPlatform;
-	function getPlatforms(filters) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/platforms");
-	    if (filters && Object.keys(filters).length > 0) {
-	        for (var _i = 0, _a = Object.keys(filters); _i < _a.length; _i++) {
-	            var key = _a[_i];
-	            uri.addQueryParam(key, filters[key]);
-	        }
-	    }
-	    return fetch_1.getUri(uri);
-	}
-	exports.getPlatforms = getPlatforms;
 
 
 /***/ },
@@ -2469,11 +2412,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return fetch_1.patchUri(uri, testplanItem);
 	}
 	exports.updateCertificationTestPlanItem = updateCertificationTestPlanItem;
-	function getCertificationTestData(caseNumber) {
-	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/certcases/" + caseNumber + "/testdata");
+	function getCertificationTestResults(caseNumber) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/certcases/" + caseNumber + "/certrpms");
 	    return fetch_1.getUri(uri);
 	}
-	exports.getCertificationTestData = getCertificationTestData;
+	exports.getCertificationTestResults = getCertificationTestResults;
+	function getCertificationTestLog(caseNumber, rpmId, testId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/certcases/" + caseNumber + "/certrpms/" + rpmId + "/tests/" + testId + "/runtimelog");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getCertificationTestLog = getCertificationTestLog;
+	function getCertificationSubTestLog(caseNumber, rpmId, testId, subTestId) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/certcases/" + caseNumber + "/certrpms/" + rpmId + "/tests/" + testId + "/subtests/" + subTestId + "/runtimelog");
+	    return fetch_1.getUri(uri);
+	}
+	exports.getCertificationSubTestLog = getCertificationSubTestLog;
 
 
 /***/ },
@@ -2723,6 +2676,93 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", { value: true });
 	var env_1 = __webpack_require__(1);
 	var fetch_1 = __webpack_require__(2);
+	function getAll(filters) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/all");
+	    if (filters && Object.keys(filters).length > 0) {
+	        for (var _i = 0, _a = Object.keys(filters); _i < _a.length; _i++) {
+	            var key = _a[_i];
+	            uri.addQueryParam(key, filters[key]);
+	        }
+	    }
+	    var result = fetch_1.getUri(uri);
+	    console.log(result);
+	    return result;
+	}
+	exports.getAll = getAll;
+	function getProgram(id) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/v2/programs/" + id);
+	    return fetch_1.getUri(uri);
+	}
+	exports.getProgram = getProgram;
+	function getPrograms(filters) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/v2/programs");
+	    if (filters && Object.keys(filters).length > 0) {
+	        for (var _i = 0, _a = Object.keys(filters); _i < _a.length; _i++) {
+	            var key = _a[_i];
+	            uri.addQueryParam(key, filters[key]);
+	        }
+	    }
+	    return fetch_1.getUri(uri);
+	}
+	exports.getPrograms = getPrograms;
+	function getRedHatProduct(id) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/v2/products/" + id);
+	    return fetch_1.getUri(uri);
+	}
+	exports.getRedHatProduct = getRedHatProduct;
+	function getRedHatProducts(filters) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/v2/products");
+	    if (filters && Object.keys(filters).length > 0) {
+	        for (var _i = 0, _a = Object.keys(filters); _i < _a.length; _i++) {
+	            var key = _a[_i];
+	            uri.addQueryParam(key, filters[key]);
+	        }
+	    }
+	    return fetch_1.getUri(uri);
+	}
+	exports.getRedHatProducts = getRedHatProducts;
+	function getRedHatVersion(id) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/v2/versions/" + id);
+	    return fetch_1.getUri(uri);
+	}
+	exports.getRedHatVersion = getRedHatVersion;
+	function getRedHatVersions(filters) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/v2/versions");
+	    if (filters && Object.keys(filters).length > 0) {
+	        for (var _i = 0, _a = Object.keys(filters); _i < _a.length; _i++) {
+	            var key = _a[_i];
+	            uri.addQueryParam(key, filters[key]);
+	        }
+	    }
+	    return fetch_1.getUri(uri);
+	}
+	exports.getRedHatVersions = getRedHatVersions;
+	function getPlatform(id) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/v2/platforms/" + id);
+	    return fetch_1.getUri(uri);
+	}
+	exports.getPlatform = getPlatform;
+	function getPlatforms(filters) {
+	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cwe/rhproducts/v2/platforms");
+	    if (filters && Object.keys(filters).length > 0) {
+	        for (var _i = 0, _a = Object.keys(filters); _i < _a.length; _i++) {
+	            var key = _a[_i];
+	            uri.addQueryParam(key, filters[key]);
+	        }
+	    }
+	    return fetch_1.getUri(uri);
+	}
+	exports.getPlatforms = getPlatforms;
+
+
+/***/ },
+/* 28 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var env_1 = __webpack_require__(1);
+	var fetch_1 = __webpack_require__(2);
 	function runInsights(caseNumber, attachmentId) {
 	    var uri = env_1.default.hydraHostName.clone().setPath(env_1.default.pathPrefix + "/cases/" + caseNumber + "/attachments/" + attachmentId + "/insights");
 	    return fetch_1.getUri(uri);
@@ -2736,7 +2776,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 28 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2774,7 +2814,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 29 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2794,7 +2834,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 30 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2819,7 +2859,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 31 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2845,7 +2885,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 32 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2887,7 +2927,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 33 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2902,7 +2942,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 34 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2927,7 +2967,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 35 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2952,7 +2992,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 36 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -2982,7 +3022,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 37 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3050,7 +3090,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3071,7 +3111,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3096,7 +3136,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 40 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3111,7 +3151,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3212,7 +3252,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3252,7 +3292,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3293,7 +3333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3353,7 +3393,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3363,7 +3403,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var caseGroup_1 = __webpack_require__(7);
 	var bugzilla_1 = __webpack_require__(6);
 	var account_1 = __webpack_require__(5);
-	var entitlement_1 = __webpack_require__(48);
+	var entitlement_1 = __webpack_require__(49);
 	var product_1 = __webpack_require__(8);
 	function getCaseFields(options) {
 	    var finalFields = [];
@@ -3410,6 +3450,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        'contributors',
 	        'createdByContactId',
 	        'createdByUserId',
+	        'createdByName',
 	        'createdDate',
 	        'critSit',
 	        'currentCaseOwnerManagersEmail',
@@ -3526,7 +3567,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            'caseOwnerSuperRegion',
 	            'createdById',
 	            'createdByLink',
-	            'createdByName',
 	            'createdDateGainsight',
 	            'closedDateGainsight',
 	            'company',
@@ -3669,7 +3709,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3741,7 +3781,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -3879,7 +3919,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -3953,7 +3993,77 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 49 */
+/* 50 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	Object.defineProperty(exports, "__esModule", { value: true });
+	var user_1 = __webpack_require__(3);
+	function getExternalTrackerFields(options) {
+	    var finalFields = [];
+	    var fields = [
+	        'id',
+	        'createdDate',
+	        'description',
+	        'hasBeenPushedSuccessfully',
+	        'hasBeenPushed',
+	        'lastModifiedDate',
+	        'rejected',
+	        'resourceKey',
+	        'resourceURL',
+	        'status',
+	        'system',
+	        'ticketReference',
+	        'title',
+	    ];
+	    // 'collaborationComment: ICaseComment;
+	    Array.prototype.push.apply(finalFields, fields);
+	    if (options && options.includeUncommonFields) {
+	        var uncommonFields = [
+	            'closedAt',
+	            'collaborationCommentId',
+	            'caseId',
+	            'createdAt',
+	            'createdById',
+	            'deletedAt',
+	            'deletedByName',
+	            'establishedBy',
+	            'eligibilityKeyValue',
+	            'identifier',
+	            'lastModifiedById',
+	            'lastActivityDate',
+	            'lastReferencedDate',
+	            'lastViewedDate',
+	            'lastPushRequest',
+	            'liveID',
+	            'name',
+	            'overrideEntitlementCheck',
+	            'productID',
+	            'productName',
+	            'rejectedAt',
+	            'rejectedMessage',
+	            'severity',
+	            'solveCallingCountry',
+	            'supportTopicID',
+	            'supportTopicName',
+	            'systemInstance',
+	            'visibilityLevel'
+	        ];
+	        Array.prototype.push.apply(finalFields, uncommonFields);
+	    }
+	    if (options && options.includeCreatedBy) {
+	        Array.prototype.push.apply(finalFields, user_1.getUserFields(options).map(function (f) { return "createdBy." + f; }));
+	    }
+	    if (options && options.includeLastModifiedBy) {
+	        Array.prototype.push.apply(finalFields, user_1.getUserFields(options).map(function (f) { return "lastModifiedBy." + f; }));
+	    }
+	    return finalFields;
+	}
+	exports.getExternalTrackerFields = getExternalTrackerFields;
+
+
+/***/ },
+/* 51 */
 /***/ function(module, exports) {
 
 	(function(self) {
